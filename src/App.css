@@ -1,7 +1,44 @@
 @font-face {
-  font-family: 'GelatoSans';
-  src: url('/src/assets/fonts/GelatoSans-Light.ttf') format('truetype');
-  font-weight: 300;
-  /* or the specific weight */
+  font-family: 'Gelato Sans', 'sans-serif';
+  src: url('/fonts/GelatoSans-Medium.woff2') format('woff2'),
+    url('/fonts/GelatoSans-Medium.woff') format('woff'),
+    url('/fonts/GelatoSans-Medium.ttf') format('truetype');
+  font-weight: 500;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gelato Sans';
+  src: url('/fonts/GelatoSans-Regular.woff2') format('woff2'),
+    url('/fonts/GelatoSans-Regular.woff') format('woff'),
+    url('/fonts/GelatoSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gelato Sans';
+  src: url('/fonts/GelatoSans-Light.woff2') format('woff2'),
+    url('/fonts/GelatoSans-Light.woff') format('woff'),
+    url('/fonts/GelatoSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* body,
+div,
+p {
+  font-family: 'Gelato Sans', sans-serif;
+} */
+
+.gelato-medium {
+  font-weight: 500;
+}
+
+.gelato-regular {
+  font-weight: 400;
+}
+
+.gelato-light {
+  font-weight: 300;
 }
