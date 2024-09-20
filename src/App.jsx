@@ -4,7 +4,10 @@ import Navbar2nd from "./components/Navbar/Navbar2nd"
 import TopNav from "./components/Navbar/TopNav"
 import './App.css'
 import BannerPartTwo from "./components/Banner/BannerPartTwo"
-import WhyCooseGelato from "./components/Banner/WhyCooseGelato"
+import WhyCooseGelato from "./components/Body/WhyCooseGelato"
+import Print from "./components/Body/Print"
+import Connect from "./components/Body/Connect"
+import Footer from "./components/Footer/Footer"
 
 function App() {
 
@@ -17,6 +20,9 @@ function App() {
       <Banner />
       <BannerPartTwo />
       <WhyCooseGelato />
+      <Print />
+      <Connect />
+      <Footer />
     </div>
   )
 }
