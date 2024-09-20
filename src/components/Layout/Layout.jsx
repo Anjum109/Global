@@ -3,6 +3,7 @@ import TopNav from '../Navbar/TopNav';
 import Navbar from '../Navbar/Navbar';
 import Navbar2nd from '../Navbar/Navbar2nd';
 import Footer from '../Footer/Footer';
+import { FaHeadphones } from 'react-icons/fa'; // Import the icon
 
 export default function Layout({ children }) {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -31,6 +32,16 @@ export default function Layout({ children }) {
                 {children}
             </div>
             <Footer />
+
+            {/* Fixed Contact Us Button */}
+            <div className='hidden lg:block'>
+                <div className="fixed bottom-10 right-10">
+                    <button className='flex gap-2 text-white bg-black items-center text-[14px] cursor-pointer  px-4 rounded-full py-2'>
+                        <FaHeadphones />
+                        <p className='font-medium font-gelato'>Contact Us</p>
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }

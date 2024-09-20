@@ -98,6 +98,7 @@ export default function Navbar2nd() {
 
     return (
         <div className='border border-b-2 border-gray-200'>
+
             <div className='mx-[130px] flex items-center relative'>
                 {buttons.map((buttonText, index) => (
                     <div key={index}
