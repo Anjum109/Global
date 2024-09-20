@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FaAngleDown } from "react-icons/fa";
 import { IoIosArrowUp, IoIosArrowForward } from "react-icons/io";
+import BestSellers from '../Menus/BestSellers';
+import MensClothing from '../Menus/MensClothing';
+import WomensClothing from '../Menus/WomensClothing';
 
 const menus = {
     "Product": {
         items: ["Best Sellers", "Mens clothing", "Womens clothing"],
-        submenus: {
-            "Best Sellers": ["Item A", "Item B"],
-            "Mens clothing": ["Shirts", "Pants"],
-            "Womens clothing": ["Dresses", "Tops"],
-        }
+        submenus: {}
     },
     "Start Selling": {
         items: ["Guide", "FAQ", "Tips"],
@@ -33,11 +32,12 @@ const menus = {
     }
 };
 
-
 export default function Navbar2nd() {
     const [hovered, setHovered] = useState(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [submenuHovered, setSubmenuHovered] = useState(null);
+    const [submenuVisible, setSubmenuVisible] = useState(false);
+    const timeoutRef = useRef(null);
 
     const buttons = [
         "Product",
@@ -49,19 +49,34 @@ export default function Navbar2nd() {
         "Gelato Connect",
     ];
 
-    const handleMenuItemClick = (item) => {
-        console.log(`Clicked on ${item}`); // Replace with desired action
-    };
-
     const handleMouseEnter = (index) => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
         setHovered(index);
         setIsMenuOpen(true);
     };
 
     const handleMouseLeave = () => {
-        setHovered(null);
-        setIsMenuOpen(false);
-        setSubmenuHovered(null);
+        timeoutRef.current = setTimeout(() => {
+            setHovered(null);
+            setIsMenuOpen(false);
+            setSubmenuHovered(null);
+            setSubmenuVisible(false);
+        }, 300);
+    };
+
+    const handleSubmenuMouseEnter = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        setSubmenuVisible(true);
+    };
+
+    const handleSubmenuMouseLeave = () => {
+        timeoutRef.current = setTimeout(() => {
+            setSubmenuVisible(false);
+        }, 300);
     };
 
     return (
@@ -80,24 +95,48 @@ export default function Navbar2nd() {
                             {buttonText === "Pro sellers" ? null : (hovered === index ? <IoIosArrowUp /> : <FaAngleDown />)}
                         </button>
                         {isMenuOpen && hovered === index && buttonText !== "Pro sellers" && (
-                            <div className="absolute left-0 bg-white border border-gray-200 p-2 shadow-lg z-10 w-[250px]">
+                            <div
+                                className="absolute left-0 bg-white border border-gray-200 p-2 shadow-lg z-10 w-[250px]"
+                                onMouseEnter={handleSubmenuMouseEnter}
+                                onMouseLeave={handleSubmenuMouseLeave}
+                            >
                                 {menus[buttonText].items.map((item, idx) => (
                                     <div
                                         key={idx}
                                         className='flex justify-between items-center px-4 py-2 hover:bg-gray-100 w-full cursor-pointer'
-                                        onClick={() => handleMenuItemClick(item)}
                                         onMouseEnter={() => setSubmenuHovered(item)}
                                         onMouseLeave={() => setSubmenuHovered(null)}
                                     >
                                         <span>{item}</span>
                                         <IoIosArrowForward />
+                                        {/* Custom content for Best Sellers */}
+                                        {submenuVisible && submenuHovered === item && item === "Best Sellers" && (
+                                            <div className="absolute left-full top-0 bg-white border border-gray-200 shadow-lg z-10 w-[600px] mt-0 p-4">
+                                                <BestSellers />
+                                            </div>
+                                        )}
+
+                                        {/* Custom content for Mens Clothing */}
+                                        {submenuVisible && submenuHovered === item && item === "Mens clothing" && (
+                                            <div className="absolute left-full top-0 bg-white border border-gray-200 shadow-lg z-10 w-[600px] mt-0 p-4">
+                                                <MensClothing />
+                                            </div>
+                                        )}
+                                        {/* Custom content for Mens Clothing */}
+                                        {submenuVisible && submenuHovered === item && item === "Womens clothing" && (
+                                            <div className="absolute left-full top-0 bg-white border border-gray-200 shadow-lg z-10 w-[600px] mt-0 p-4">
+                                                <WomensClothing />
+                                            </div>
+                                        )}
+
+                                        {/* Default submenus */}
                                         {submenuHovered === item && menus[buttonText].submenus[item] && (
                                             <div className="absolute left-full top-0 bg-white border border-gray-200 shadow-lg z-10 w-[200px] mt-0">
                                                 {menus[buttonText].submenus[item].map((subitem, subIdx) => (
                                                     <div
                                                         key={subIdx}
                                                         className='px-4 py-2 hover:bg-gray-100 cursor-pointer'
-                                                        onClick={() => handleMenuItemClick(subitem)}
+                                                        onClick={() => console.log(`Clicked on ${subitem}`)}
                                                     >
                                                         {subitem}
                                                     </div>
