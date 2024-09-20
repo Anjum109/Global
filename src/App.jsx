@@ -8,22 +8,25 @@ import WhyCooseGelato from "./components/Body/WhyCooseGelato"
 import Print from "./components/Body/Print"
 import Connect from "./components/Body/Connect"
 import Footer from "./components/Footer/Footer"
+import Layout from "./components/Layout/Layout"
 
 function App() {
 
 
   return (
-    <div className="body">
-      <TopNav />
-      <Navbar />
-      <Navbar2nd />
-      <Banner />
-      <BannerPartTwo />
-      <WhyCooseGelato />
-      <Print />
-      <Connect />
-      <Footer />
-    </div>
+    <Layout className="body">
+
+      <div className="">
+        <Banner />
+        <div className="hidden lg:block">
+          <BannerPartTwo />
+        </div>
+        <WhyCooseGelato />
+        <Print />
+        <Connect />
+      </div>
+
+    </Layout>
   )
 }
 

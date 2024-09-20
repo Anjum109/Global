@@ -3,15 +3,15 @@ import img from '../../assets/images/2.webp'
 
 export default function WhyCooseGelato() {
     return (
-        <div className='px-[120px] py-5  w-full'>
-            <h1 className='text-[#212529] text-[60px] text-center gelato-medium'>Why choose Gelato</h1>
-            <div className='flex w-full'>
+        <div className='px-5 lg:px-[120px] py-5  w-full'>
+            <h1 className='text-[#212529] text-[1.5rem] lg:text-[60px] text-center gelato-medium'>Why choose Gelato</h1>
+            <div className='flex flex-col lg:flex-row w-full'>
                 {/* leftside  */}
-                <div className='w-[50%]'>
+                <div className='lg:w-[50%]'>
                     <img src={img} alt='img' />
                 </div>
                 {/* rightside  */}
-                <div className='w-[50%] ms-12 mt-3 flex flex-col gap-3 lg:pe-24'>
+                <div className='lg:w-[50%] lg:ms-12 mt-3 flex flex-col gap-3 lg:pe-24'>
                     <div className=''>
                         <h1 className='text-[24px] gelato-regular text-[#212121]'>▻ World's largest print-on-demand network</h1>
                         <p className='text-[16px] gelato-light text-[#212121]'>140+ print partners in 32 countries. Gelato is a truly global service.</p>
