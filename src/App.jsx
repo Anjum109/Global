@@ -9,6 +9,7 @@ import Print from "./components/Body/Print"
 import Connect from "./components/Body/Connect"
 import Footer from "./components/Footer/Footer"
 import Layout from "./components/Layout/Layout"
+import GelatoConnectMenu from "./components/Menus/GelatoConnectMenu"
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
         <Print />
         <Connect />
       </div>
-
+      <GelatoConnectMenu />
     </Layout>
   )
 }
