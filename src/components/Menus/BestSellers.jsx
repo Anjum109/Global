@@ -8,8 +8,8 @@ import wooden from '../../assets/images/wooden.webp'
 
 export default function BestSellers() {
     return (
-        <div>
-            <h1 className='text-[18px] py-3'>Best Sellers</h1>
+        <div className='p-5'>
+            <h1 className='text-[18px] py-3 gelato-medium'>Best Sellers</h1>
             {/* card */}
             <div className='grid grid-cols-3 gap-5'>
                 <div className='p-3 hover:bg-gray-300'>
