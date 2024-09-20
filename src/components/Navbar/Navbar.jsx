@@ -35,10 +35,7 @@ export default function Navbar() {
         setShowCurrencyMenu(false); // Close currency menu if it's open
     };
 
-    const toggleCurrencyMenu = () => {
-        setShowCurrencyMenu((prev) => !prev);
-        setShowLanguageMenu(false); // Close language menu if it's open
-    };
+
 
     return (
         <div className='border border-b-2 border-gray-200'>
